@@ -43,6 +43,7 @@ class DishDetail extends Component {
     }
 
     renderDish(dish) {
+        console.log('Render dish ---- DishDetail');
         if (dish !== null) {
             return (
                 <div className='col-12 col-md-5 m-1'>
@@ -61,15 +62,14 @@ class DishDetail extends Component {
     }
 
     renderComments(comments) {
+        console.log('Render Comments ---- DishDetail');
         if (comments !== null) {
             return comments.map((comment) => {
                 return (
-                    <ul>
-                        <li key={comment.id} style={{ listStyleType: 'none' }}>
-                            <div>{comment.comment}</div>
-                            <div>-- {comment.user}, {comment.date}</div>
-                        </li>
-                    </ul>
+                    <li key={comment.id} className='list-unstyled m-2'>
+                        <div>{comment.comment}</div>
+                        <div>-- {comment.user}, {comment.date}</div>
+                    </li>
                 )
             })
         } else {
@@ -88,7 +88,7 @@ class DishDetail extends Component {
                     {this.renderDish(dish)}
                     <div className='col-12 col-md-5 m-1'>
                         <h4><strong>Comments</strong></h4>
-                        {this.renderComments(comments)}
+                        <ul>{this.renderComments(comments)}</ul>
                     </div>
                 </div>
             </div>
