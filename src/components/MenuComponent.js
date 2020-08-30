@@ -18,6 +18,18 @@ class Menu extends Component {
         })
     }
 
+    renderDish(dish) {
+        if (dish !== null) {
+            return (
+                <DishDetail dish={this.state.selectedDish}/>
+            )
+        } else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
     render() {
         const menu = this.props.dishes.map(dish => {
             return (
