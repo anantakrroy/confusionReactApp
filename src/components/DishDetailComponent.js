@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { COMMENTS } from '../shared/comments';
+import { COMMENTS } from '../shared/comments';
 import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
 
 class DishDetail extends Component {
@@ -7,38 +7,7 @@ class DishDetail extends Component {
         super(props);
 
         this.state = {
-            comments: [
-                {
-                    id: 1,
-                    comment: 'Imagine all the eatables living in confusion',
-                    user: 'John Lennon',
-                    date: 'Oct 17, 2012'
-                },
-                {
-                    id: 2,
-                    comment: 'Imagine all the eatables living in confusion',
-                    user: 'John Lennon',
-                    date: 'Oct 17, 2012'
-                },
-                {
-                    id: 3,
-                    comment: 'Imagine all the eatables living in confusion',
-                    user: 'John Lennon',
-                    date: 'Oct 17, 2012'
-                },
-                {
-                    id: 4,
-                    comment: 'Imagine all the eatables living in confusion',
-                    user: 'John Lennon',
-                    date: 'Oct 17, 2012'
-                },
-                {
-                    id: 5,
-                    comment: 'Imagine all the eatables living in confusion',
-                    user: 'John Lennon',
-                    date: 'Oct 17, 2012'
-                }
-            ]
+            comments: COMMENTS
         }
     }
 
@@ -46,15 +15,13 @@ class DishDetail extends Component {
         console.log('Render dish ---- DishDetail');
         if (dish !== null) {
             return (
-                <div className='col-12 col-md-5 m-1'>
-                    <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
-                        <CardBody>
-                            <CardTitle><strong>{dish.name}</strong></CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
+                <Card>
+                    <CardImg width="100%" src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle><strong>{dish.name}</strong></CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
             )
         } else {
             return (<div></div>);
@@ -84,8 +51,8 @@ class DishDetail extends Component {
         console.log(dish);
         return (
             <div className='container'>
-                <div className='row'>
-                    {this.renderDish(dish)}
+                <div className='row d-flex justify-content-around'>
+                    <div className='col-12 col-md-5 m-1'>{this.renderDish(dish)}</div>
                     <div className='col-12 col-md-5 m-1'>
                         <h4><strong>Comments</strong></h4>
                         <ul>{this.renderComments(comments)}</ul>
