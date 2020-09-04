@@ -21,6 +21,7 @@ class Menu extends Component {
     renderDish(dish) {
         if (dish !== null) {
             return (
+                // Passing selected dish object as the prop to the DishDetail component 
                 <DishDetail dish={this.state.selectedDish}/>
             )
         } else {
