@@ -11,8 +11,16 @@ class DishDetail extends Component {
         }
     }
 
+    allDishes() {
+        const dishes = this.props.dishes;
+        const dishNames = dishes.map((dish) => {
+            return (<span><small> {dish.name}   </small></span>);
+        });
+        console.log(dishNames);
+        return dishNames;
+    }
+
     renderDish(dish) {
-        console.log('Render dish ---- DishDetail');
         if (dish !== null) {
             return (
                 <Card>
@@ -37,15 +45,20 @@ class DishDetail extends Component {
                 </li>
             )
         });
-        if (comments !== null && this.props.dish !== null) {
+
+        if (comments.length !== 0 && this.props.dish !== null) {
             return (
                 <div>
+                    <h3>You selected {this.props.dish.name} from among these dishes : {this.allDishes()}</h3>
                     <h4><strong>Comments</strong></h4>
                     <ul>{commentList}</ul>
                 </div>
             )
-        } else {
-            return (<div></div>)
+        } else if (this.props.dish !== null && comments.length === 0) {
+            return (<div>
+                <h3>You selected {this.props.dish.name} from among these dishes : {this.allDishes()}</h3>
+                <p>No comments found !</p>
+            </div>)
         }
 
     }
@@ -53,7 +66,6 @@ class DishDetail extends Component {
     render() {
         const dish = this.props.dish;
         const comments = this.state.comments;
-        console.log(dish);
         return (
             <div className='container'>
                 <div className='row d-flex justify-content-around'>
