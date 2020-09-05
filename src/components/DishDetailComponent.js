@@ -29,16 +29,21 @@ class DishDetail extends Component {
     }
 
     renderComments(comments) {
-        console.log('Render Comments ---- DishDetail');
-        if (comments !== null) {
-            return comments.map((comment) => {
-                return (
-                    <li key={comment.id} className='list-unstyled m-2'>
-                        <div>{comment.comment}</div>
-                        <div>-- {comment.user}, {comment.date}</div>
-                    </li>
-                )
-            })
+        const commentList = comments.map((comment) => {
+            return (
+                <li key={comment.id} className='list-unstyled m-2'>
+                    <div>{comment.comment}</div>
+                    <div>-- {comment.user}, {comment.date}</div>
+                </li>
+            )
+        });
+        if (comments !== null && this.props.dish !== null) {
+            return (
+                <div>
+                    <h4><strong>Comments</strong></h4>
+                    <ul>{commentList}</ul>
+                </div>
+            )
         } else {
             return (<div></div>)
         }
@@ -54,8 +59,7 @@ class DishDetail extends Component {
                 <div className='row d-flex justify-content-around'>
                     <div className='col-12 col-md-5 m-1'>{this.renderDish(dish)}</div>
                     <div className='col-12 col-md-5 m-1'>
-                        <h4><strong>Comments</strong></h4>
-                        <ul>{this.renderComments(comments)}</ul>
+                        {this.renderComments(comments)}
                     </div>
                 </div>
             </div>
