@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 
@@ -26,13 +27,10 @@ class Main extends Component {
         console.log('Called MAIN component render method !');
         return (
             <div className="App">
-                <Navbar dark color="primary">
-                    <div className="container">
-                        <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-                    </div>
-                </Navbar>
+                <Header />
                 <Menu dishes={this.state.dishes} clickedDish={(dish) => this.onDishSelect(dish)} />
                 <DishDetail comments={this.state.comments} dish={this.state.selectedDish} />
+                <Footer />
             </div>
         );
     }
