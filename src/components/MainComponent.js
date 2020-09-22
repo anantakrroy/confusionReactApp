@@ -23,6 +23,7 @@ class Main extends Component {
     }
 
     render() {
+        console.log('Called MAIN component render method !');
         return (
             <div className="App">
                 <Navbar dark color="primary">
@@ -30,7 +31,7 @@ class Main extends Component {
                         <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
                     </div>
                 </Navbar>
-                <Menu dishes={this.state.dishes} onClick={(dish) => this.onDishSelect(dish)} />
+                <Menu dishes={this.state.dishes} clickedDish={(dish) => this.onDishSelect(dish)} />
                 <DishDetail comments={this.state.comments} dish={this.state.selectedDish} />
             </div>
         );
