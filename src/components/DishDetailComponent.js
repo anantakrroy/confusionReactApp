@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardTitle, CardBody, CardText } from 'reactstrap';
 
-function RenderDishDetail({dish}) {
+function RenderDishDetail({ dish }) {
     return dish ? (
         <Card>
             <CardImg width="100%" src={dish.image} alt={dish.name} />
@@ -29,7 +29,9 @@ function RenderComments({ comments, dish }) {
             <h4><strong>Comments</strong></h4>
             <ul>{commentList}</ul>
         </div>
-    ) : <div></div>
+    ) : <div>
+            <p>No comments to show ! Choose a dish to show comments...</p>
+        </div>
 }
 
 
